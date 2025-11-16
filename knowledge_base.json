@@ -1,0 +1,182 @@
+{
+  "rules": [
+    {
+      "id": 1,
+      "name": "Не зачет по лабам",
+      "priority": 100,
+      "conditions": [
+        { "fact": "labs_count", "operator": "<", "value": 3 }
+      ],
+      "actions": [
+        { "fact": "grade", "value": "Не зачет" },
+        { "fact": "final", "value": true }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Хорошая посещаемость",
+      "priority": 50,
+      "conditions": [
+        { "fact": "attendance_percent", "operator": ">=", "value": 50 }
+      ],
+      "actions": [
+        { "fact": "attendance", "value": true }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Плохая посещаемость",
+      "priority": 50,
+      "conditions": [
+        { "fact": "attendance_percent", "operator": "<", "value": 50 }
+      ],
+      "actions": [
+        { "fact": "attendance", "value": false }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Не зачет (3 лабы, плохая посещаемость)",
+      "priority": 90,
+      "conditions": [
+        { "fact": "labs_count", "operator": "==", "value": 3 },
+        { "fact": "attendance", "operator": "==", "value": false }
+      ],
+      "actions": [
+        { "fact": "grade", "value": "Не зачет" },
+        { "fact": "final", "value": true }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Доп условие на 3",
+      "priority": 40,
+      "conditions": [
+        { "fact": "labs_count", "operator": "==", "value": 3 },
+        { "fact": "attendance", "operator": "==", "value": true }
+      ],
+      "actions": [
+        { "fact": "eligible_for_auto_3", "value": true }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Автомат 3",
+      "priority": 40,
+      "conditions": [
+        { "fact": "eligible_for_auto_3", "operator": "==", "value": true }
+      ],
+      "actions": [
+        { "fact": "auto_grade", "value": 3 }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Доп условие на 4 (4 лабы)",
+      "priority": 40,
+      "conditions": [
+        { "fact": "labs_count", "operator": "==", "value": 4 },
+        { "fact": "attendance", "operator": "==", "value": true }
+      ],
+      "actions": [
+        { "fact": "eligible_for_auto_4", "value": true }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Доп условие на 4 (5 лаб)",
+      "priority": 40,
+      "conditions": [
+        { "fact": "labs_count", "operator": "==", "value": 5 }
+      ],
+      "actions": [
+        { "fact": "eligible_for_auto_4", "value": true }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Автомат 4",
+      "priority": 40,
+      "conditions": [
+        { "fact": "eligible_for_auto_4", "operator": "==", "value": true }
+      ],
+      "actions": [
+        { "fact": "auto_grade", "value": 4 }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Экзамен сдан",
+      "priority": 30,
+      "conditions": [
+        { "fact": "exam_answer", "operator": "==", "value": "уд" }
+      ],
+      "actions": [
+        { "fact": "exam_passed", "value": true }
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Экзамен не сдан",
+      "priority": 30,
+      "conditions": [
+        { "fact": "exam_answer", "operator": "==", "value": "неуд" }
+      ],
+      "actions": [
+        { "fact": "exam_passed", "value": false }
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Итоговая оценка 3",
+      "priority": 80,
+      "conditions": [
+        { "fact": "auto_grade", "operator": "==", "value": 3 },
+        { "fact": "exam_passed", "operator": "==", "value": false }
+      ],
+      "actions": [
+        { "fact": "grade", "value": "3" },
+        { "fact": "final", "value": true }
+      ]
+    },
+    {
+      "id": 13,
+      "name": "Итоговая оценка 4 (экзамен)",
+      "priority": 80,
+      "conditions": [
+        { "fact": "auto_grade", "operator": "==", "value": 3 },
+        { "fact": "exam_passed", "operator": "==", "value": true }
+      ],
+      "actions": [
+        { "fact": "grade", "value": "4" },
+        { "fact": "final", "value": true }
+      ]
+    },
+    {
+      "id": 14,
+      "name": "Итоговая оценка 4 (автомат)",
+      "priority": 80,
+      "conditions": [
+        { "fact": "auto_grade", "operator": "==", "value": 4 },
+        { "fact": "exam_passed", "operator": "==", "value": false }
+      ],
+      "actions": [
+        { "fact": "grade", "value": "4" },
+        { "fact": "final", "value": true }
+      ]
+    },
+    {
+      "id": 15,
+      "name": "Итоговая оценка 5",
+      "priority": 80,
+      "conditions": [
+        { "fact": "auto_grade", "operator": "==", "value": 4 },
+        { "fact": "exam_passed", "operator": "==", "value": true }
+      ],
+      "actions": [
+        { "fact": "grade", "value": "5" },
+        { "fact": "final", "value": true }
+      ]
+    }
+  ]
+}
