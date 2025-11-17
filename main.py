@@ -13,14 +13,14 @@ def ask_int(prompt, min_val, max_val) -> int:
                 return value
         except ValueError:
             pass
-        prompt = "❗ Неверный ввод. Введите повторно: "
+        prompt = "Неверный ввод. Введите повторно: "
 
 def ask_choice(prompt, options):
     while True:
         ans = input(prompt).strip().lower()
         if ans in options:
             return ans
-        prompt = "❗ Неверный ввод. Введите повторно: "
+        prompt = "Неверный ввод. Введите повторно: "
 
 if __name__ == "__main__":
     print("🎓 Экспертная система: Оценка студента\n")
