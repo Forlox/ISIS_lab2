@@ -1,5 +1,3 @@
-from rule import Rule
-
 class InferenceEngine:
     def __init__(self, kb, wm, resolver):
         self.kb = kb

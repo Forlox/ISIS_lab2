@@ -8,7 +8,7 @@ class ExplanationModule:
 
         lines = ["=== Цепочка вывода ==="]
         for step in self.log:
-            lines.append(f"✅ Правило '{step['rule_name']}' (ID={step['rule_id']})")
+            lines.append(f"Правило '{step['rule_name']}' (ID={step['rule_id']})")
             for action in step['actions']:
                 lines.append(f"   • {action}")
         return "\n".join(lines)
