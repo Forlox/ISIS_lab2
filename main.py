@@ -23,7 +23,6 @@ def ask_choice(prompt, options):
         prompt = "Неверный ввод. Введите повторно: "
 
 if __name__ == "__main__":
-    print("Экспертная система: Оценка студента\n")
     wm = WorkingMemory()
     kb = KnowledgeBase('knowledge_base.json')
 
