@@ -41,7 +41,7 @@ class Rule:
             name = act['fact']
             value = act['value']
             working_memory.assert_fact(name, value)
-            log.append(f"→ Утверждён факт: {name} = {value!r}")
+            log.append(f"- Утверждён факт: {name} = {value!r}")
         return log
 
     def specificity(self):

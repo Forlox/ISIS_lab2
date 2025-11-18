@@ -10,5 +10,5 @@ class ExplanationModule:
         for step in self.log:
             lines.append(f"Правило '{step['rule_name']}' (ID={step['rule_id']})")
             for action in step['actions']:
-                lines.append(f"   • {action}")
+                lines.append(f"\t{action}")
         return "\n".join(lines)
